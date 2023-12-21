@@ -78,7 +78,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 
-nu_uh_u_mf (Discord username). 
+rulft44 (Discord username). 
 Feel free to DM me for anything!
 
 
