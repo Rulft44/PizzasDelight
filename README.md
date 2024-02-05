@@ -3,8 +3,6 @@
 
 
 
-
-
 <h3 align="center">  Pizza's Delight 🍕 mod for Forge, made to satisfy your inner italian 😋🤤!</h3>
   <p align="center">
     <br />
@@ -39,7 +37,7 @@ The mod is still in development, so it hasn't been fully released yet. However, 
   - [ ] Baked Goods
 - [ ] Adding the recipes
 - [ ] Adding misc things
-- [X] Removing Herobrine
+- [ ] Removing Herobrine
 
 See the [open issues](https://github.com/Rulft44/SimplePizza/issues) for a full list of proposed features and known issues.
 
