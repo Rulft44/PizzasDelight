@@ -15,6 +15,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, PizzasDelight.MOD_ID);
 
+    public static final RegistryObject<Item> MOZZARELLA = ITEMS.register("mozzarella",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+
     public static final RegistryObject<Item> MARGHERITA_RAW = ITEMS.register("margherita_raw",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
     public static final RegistryObject<Item> MARGHERITA = ITEMS.register("margherita",

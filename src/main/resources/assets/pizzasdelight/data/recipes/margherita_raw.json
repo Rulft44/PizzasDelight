@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " B ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "pizzasdelight:mozzarella"
+    },
+    "B": {
+      "item": "farmersdelight:tomato_sauce"
+    },
+    "C": [
+      {
+        "item": "farmersdelight:wheat_dough"
+      },
+      {
+        "item": "create:dough"
+      }
+    ]
+  },
+  "result": {
+    "item": "pizzasdelight:margherita_raw",
+    "count": 1
+  }
+}
