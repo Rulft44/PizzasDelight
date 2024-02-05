@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "simplepizza:item/margherita_raw"
+    "layer0": "pizzasdelight:item/margherita_slice"
   }
 }

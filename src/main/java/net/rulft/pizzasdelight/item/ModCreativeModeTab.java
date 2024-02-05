@@ -1,8 +1,7 @@
-package net.rulft.simplepizza.item;
+package net.rulft.pizzasdelight.item;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.rulft.simplepizza.item.ModItems;
 
 public class ModCreativeModeTab {
     public static final CreativeModeTab PIZZA_TAB = new CreativeModeTab("pizzatab") {

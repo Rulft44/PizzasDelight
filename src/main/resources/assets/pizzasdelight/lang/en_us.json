@@ -1,0 +1,17 @@
+{
+  "Tabs": "----------------------------- Creative Tabs -----------------------------",
+  "itemGroup.pizzatab": "Pizza's Delight",
+
+  "Effects": "----------------------------- Effects -----------------------------",
+  "effect.pizzasdelight.spicy": "Spicy",
+
+  "Pizzas": "----------------------------- Pizzas -----------------------------",
+  "item.pizzasdelight.margherita_raw": "Raw Pizza Margherita",
+  "item.pizzasdelight.margherita": "Pizza Margherita",
+  "item.pizzasdelight.diavola_raw": "Raw Pizza Diavola",
+  "item.pizzasdelight.diavola": "Pizza Diavola",
+
+  "Slices": "----------------------------- Slices -----------------------------",
+  "item.pizzasdelight.margherita_slice": "Pizza Margherita Slice",
+  "item.pizzasdelight.diavola_slice": "Pizza Diavola Slice"
+}
