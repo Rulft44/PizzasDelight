@@ -1,5 +1,7 @@
 package net.rulft.pizzasdelight.item;
 
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -34,7 +36,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
 
     public static final RegistryObject<Item> DIAVOLA_SLICE = ITEMS.register("diavola_slice",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().alwaysEat().effect(() -> new MobEffectInstance(ModEffects.SPICY.get(), 120, 2), 0.5F).build())));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().alwaysEat().effect(() -> new MobEffectInstance(ModEffects.SPICY.get(), 320, 0), 1F).build())));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
