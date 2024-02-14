@@ -1,0 +1,13 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "pizzasdelight:mozzarella"
+  },
+  "cookingtime": 200
+}

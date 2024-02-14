@@ -5,8 +5,9 @@
   "Effects": "----------------------------- Effects -----------------------------",
   "effect.pizzasdelight.spicy": "Spicy",
 
-  "Ingredients": "----------------------------- Ingredients -----------------------------",
+  "Misc": "----------------------------- Misc -----------------------------",
   "item.pizzasdelight.mozzarella": "Mozzarella",
+  "item.pizzasdelight.parmigiano": "Parmigiano",
 
   "Pizzas": "----------------------------- Pizzas -----------------------------",
   "item.pizzasdelight.margherita_raw": "Raw Pizza Margherita",
