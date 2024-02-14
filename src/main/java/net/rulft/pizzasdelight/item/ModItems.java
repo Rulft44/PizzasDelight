@@ -21,6 +21,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
     public static final RegistryObject<Item> PARMIGIANO = ITEMS.register("parmigiano",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+    public static final RegistryObject<Item> PARMIGIANO_DUST = ITEMS.register("parmigiano_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
 
     public static final RegistryObject<Item> MARGHERITA_RAW = ITEMS.register("margherita_raw",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));

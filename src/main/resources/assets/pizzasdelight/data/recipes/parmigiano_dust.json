@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "pizzasdelight:parmigiano"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "pizzasdelight:parmigiano_dust",
+      "count": 4
+    }
+  ]
+}
