@@ -18,22 +18,22 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, PizzasDelight.MOD_ID);
 
     public static final RegistryObject<Item> MOZZARELLA = ITEMS.register("mozzarella",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
     public static final RegistryObject<Item> PARMIGIANO = ITEMS.register("parmigiano",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
     public static final RegistryObject<Item> PARMIGIANO_DUST = ITEMS.register("parmigiano_dust",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
 
     public static final RegistryObject<Item> SALAMI = ITEMS.register("salami",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
 
     public static final RegistryObject<Item> SALAMI_SLICE = ITEMS.register("salami_slice",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(1).meat().fast().build())));
 
     public static final RegistryObject<Item> MARGHERITA_RAW = ITEMS.register("margherita_raw",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1).food(new FoodProperties.Builder().build())));
     public static final RegistryObject<Item> MARGHERITA = ITEMS.register("margherita",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1).food(new FoodProperties.Builder().build())));
 
     public static final RegistryObject<Item> MARGHERITA_SLICE = ITEMS.register("margherita_slice",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().build())));
@@ -41,9 +41,9 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> DIAVOLA_RAW = ITEMS.register("diavola_raw",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1).food(new FoodProperties.Builder().build())));
     public static final RegistryObject<Item> DIAVOLA = ITEMS.register("diavola",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1).food(new FoodProperties.Builder().build())));
 
     public static final RegistryObject<Item> DIAVOLA_SLICE = ITEMS.register("diavola_slice",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().alwaysEat().effect(() -> new MobEffectInstance(ModEffects.SPICY.get(), 320, 0), 1F).build())));
