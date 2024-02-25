@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "?#?",
+    " + ",
+    " - "
+  ],
+  "key": {
+    "?": {
+      "item": "pizzasdelight:salami_slice"
+    },
+    "#": {
+      "item": "pizzasdelight:mozzarella"
+    },
+    "+": {
+      "item": "farmersdelight:tomato_sauce"
+    },
+    "-": {
+      "item": "farmersdelight:wheat_dough"
+    }
+  },
+  "result": {
+    "item": "pizzasdelight:diavola_raw",
+    "count": 1
+  }
+}
