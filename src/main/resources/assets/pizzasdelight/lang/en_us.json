@@ -5,10 +5,14 @@
   "Effects": "----------------------------- Effects -----------------------------",
   "effect.pizzasdelight.spicy": "Spicy",
 
-  "Misc": "----------------------------- Misc -----------------------------",
+  "Cheese": "----------------------------- Cheese -----------------------------",
   "item.pizzasdelight.mozzarella": "Mozzarella",
   "item.pizzasdelight.parmigiano": "Parmigiano Reggiano",
   "item.pizzasdelight.parmigiano_dust": "Grated Parmigiano Reggiano",
+
+  "Misc": "----------------------------- Misc -----------------------------",
+  "item.pizzasdelight.olive_oil": "Olive Oil",
+  "item.pizzasdelight.olive": "Olive",
   "item.pizzasdelight.salami": "Salami",
   "item.pizzasdelight.salami_slice": "Salami Slices",
 
