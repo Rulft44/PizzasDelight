@@ -26,10 +26,10 @@ public class ModItems {
     // ---------------------------------------------------- Cheese
     public static final RegistryObject<Item> MOZZARELLA = ITEMS.register("mozzarella",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
-    public static final RegistryObject<Item> SCAMORZA = ITEMS.register("scamorza",
+    /* TODO public static final RegistryObject<Item> SCAMORZA = ITEMS.register("scamorza",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
-    public static final RegistryObject<Item> GORGONZOLA = ITEMS.register("gorgonzola",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
+    TODO public static final RegistryObject<Item> GORGONZOLA = ITEMS.register("gorgonzola",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));*/
     public static final RegistryObject<Item> PARMIGIANO = ITEMS.register("parmigiano",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food(new FoodProperties.Builder().build())));
     public static final RegistryObject<Item> PARMIGIANO_DUST = ITEMS.register("parmigiano_dust",
