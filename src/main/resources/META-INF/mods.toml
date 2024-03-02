@@ -27,17 +27,17 @@ displayName="Pizza's Delight" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="logo.png" #optional
+logoFile="logo(UPSCALED).png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for the Forge docs for being dog**** ;D" #optional
+credits="Thanks for the Forge docs for being dog**** ;D (jk, pls don't come after my fami- *gets shot* *screams* *dies*)" #optional
 # A text field displayed in the mod UI
 authors="Dough, Cheese and Big Red Balls" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Have some lorem ipsum. :troll_face:
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis luctus odio eu tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque volutpat ligula eget lacus auctor sagittis. In hac habitasse platea dictumst. Nunc gravida elit vitae sem vehicula efficitur. Donec mattis ipsum et arcu lobortis, eleifend sagittis sem rutrum. Cras pharetra quam eget posuere fermentum. Sed id tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+An addon for the amazing Farmer's Delight mod, all about pizza and other italian meals!
 '''
+itemIcon="pizzasdelight:margherita_slice"
+configBackground="minecraft:textures/block/bricks.png"
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.pizzasdelight]] #optional
     # the modid of the dependency
@@ -50,11 +50,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-# Here's another dependency
+
 [[dependencies.pizzasdelight]]
     modId="minecraft"
     mandatory=true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pizzasdelight]]
+    modId="farmersdelight"
+    mandatory=true
+    versionRange="[1.2.3,)"
     ordering="NONE"
     side="BOTH"
