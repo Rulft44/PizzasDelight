@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Rulft44/SimplePizza">
-    <img src="src/main/resources/assets/pizzasdelight/textures/other/logo(UPSCALED).png" alt="Logo" width="100%">
+    <img src="src/main/resources/logo(UPSCALED).png" alt="Logo" width="100%">
   </a>
 
 <h3 align="center">  Pizza's Delight 🍕 mod for Forge, made to satisfy your inner italian 😋🤤!</h3>
