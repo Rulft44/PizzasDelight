@@ -7,14 +7,15 @@
 
   "Cheese": "----------------------------- Cheese -----------------------------",
   "item.pizzasdelight.mozzarella": "Mozzarella",
+  "item.pizzasdelight.scamorza": "Scamorza",
   "item.pizzasdelight.parmigiano": "Parmigiano Reggiano",
   "item.pizzasdelight.parmigiano_dust": "Grated Parmigiano Reggiano",
 
   "Misc": "----------------------------- Misc -----------------------------",
   "item.pizzasdelight.olive_oil": "Olive Oil",
-  "item.pizzasdelight.olive": "Olive",
-  "item.pizzasdelight.salami": "Salami",
-  "item.pizzasdelight.salami_slice": "Salami Slices",
+  "item.pizzasdelight.olive": "Olives",
+  "item.pizzasdelight.salami": "Salame",
+  "item.pizzasdelight.salami_slice": "Salame Slices",
 
   "Pizzas": "----------------------------- Pizzas -----------------------------",
   "item.pizzasdelight.margherita_raw": "Raw Pizza Margherita",
