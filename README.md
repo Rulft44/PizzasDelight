@@ -1,7 +1,11 @@
 ![Static Badge](https://img.shields.io/badge/-CurseForge-white?style=for-the-badge&logo=curseforge&logoColor=white&color=f16436)
 ![Static Badge](https://img.shields.io/badge/-Modrinth-white?style=for-the-badge&logo=modrinth&logoColor=white&color=%231bd96a)
 
-
+<br />
+<div align="center">
+  <a href="https://github.com/Rulft44/SimplePizza">
+    <img src="src/main/resources/assets/pizzasdelight/textures/other/logo(UPSCALED).png" alt="Logo" width="100%">
+  </a>
 
 <h3 align="center">  Pizza's Delight 🍕 mod for Forge, made to satisfy your inner italian 😋🤤!</h3>
   <p align="center">
