@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.rulft.pizzasdelight.effect.ModEffects;
+import net.rulft.pizzasdelight.effect.PizzaEffects;
 import net.rulft.pizzasdelight.item.ModItems;
 import org.slf4j.Logger;
 
@@ -27,7 +27,7 @@ public class PizzasDelight
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
-        ModEffects.register(eventBus);
+        PizzaEffects.register(eventBus);
 
 
         eventBus.addListener(this::setup);

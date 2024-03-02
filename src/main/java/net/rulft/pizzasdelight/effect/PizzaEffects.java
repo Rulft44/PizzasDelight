@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.rulft.pizzasdelight.PizzasDelight;
 
-public class ModEffects {
+public class PizzaEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PizzasDelight.MOD_ID);
 
