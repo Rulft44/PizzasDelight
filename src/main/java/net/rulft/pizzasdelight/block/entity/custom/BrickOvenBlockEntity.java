@@ -52,7 +52,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public Component getDisplayName() {
-        return new TextComponent("Brick Oven");
+        return new TextComponent("              Brick Oven");
     }
 
     @Nullable
@@ -128,6 +128,6 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private static boolean hasNotReachedStackLimit(BrickOvenBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(3).getCount() < entity.itemHandler.getStackInSlot(3).getMaxStackSize();
+        return entity.itemHandler.getStackInSlot(2).getCount() < entity.itemHandler.getStackInSlot(2).getMaxStackSize();
     }
 }

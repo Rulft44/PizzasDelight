@@ -45,17 +45,17 @@ public class ModItems {
                     .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), MEDIUM_DURATION, 0), 1.0F).build())));
     // ---------------------------------------------------- Pizzas
     public static final RegistryObject<Item> MARGHERITA_RAW = ITEMS.register("margherita_raw",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(8)));
     public static final RegistryObject<Item> MARGHERITA = ITEMS.register("margherita",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(8)));
 
     public static final RegistryObject<Item> MARGHERITA_SLICE = ITEMS.register("margherita_slice",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().build())));
 
     public static final RegistryObject<Item> DIAVOLA_RAW = ITEMS.register("diavola_raw",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(8)));
     public static final RegistryObject<Item> DIAVOLA = ITEMS.register("diavola",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(1)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).stacksTo(8)));
 
     public static final RegistryObject<Item> DIAVOLA_SLICE = ITEMS.register("diavola_slice",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.PIZZA_TAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8F).fast().alwaysEat().effect(() -> new MobEffectInstance(PizzaEffects.SPICY.get(), 320, 0), 1F).build())));
