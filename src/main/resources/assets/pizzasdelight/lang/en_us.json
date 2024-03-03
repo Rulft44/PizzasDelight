@@ -26,5 +26,8 @@
 
   "Slices": "----------------------------- Slices -----------------------------",
   "item.pizzasdelight.margherita_slice": "Pizza Margherita Slice",
-  "item.pizzasdelight.diavola_slice": "Pizza Diavola Slice"
+  "item.pizzasdelight.diavola_slice": "Pizza Diavola Slice",
+
+  "Blocks": "----------------------------- Blocks -----------------------------",
+  "block.pizzasdelight.brick_oven": "Brick Oven"
 }

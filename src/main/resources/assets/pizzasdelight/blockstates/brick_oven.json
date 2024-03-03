@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "pizzasdelight:block/brick_oven",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "pizzasdelight:block/brick_oven"
+    },
+    "facing=south": {
+      "model": "pizzasdelight:block/brick_oven",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "pizzasdelight:block/brick_oven",
+      "y": 270
+    }
+  }
+}
