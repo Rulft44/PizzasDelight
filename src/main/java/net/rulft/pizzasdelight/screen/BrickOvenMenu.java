@@ -1,12 +1,10 @@
 package net.rulft.pizzasdelight.screen;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -20,25 +18,41 @@ import org.jetbrains.annotations.Nullable;
 public class BrickOvenMenu extends AbstractContainerMenu{
     private final BrickOvenBlockEntity blockEntity;
     private final Level level;
+    private final ContainerData data;
 
     public BrickOvenMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()));
+        this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
-    public BrickOvenMenu(int pContainerId, Inventory inv, BlockEntity entity) {
+    public BrickOvenMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.BRICK_OVEN_MENU.get(), pContainerId);
         checkContainerSize(inv, 3);
         blockEntity = ((BrickOvenBlockEntity) entity);
         this.level = inv.player.level;
+        this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 56, 53));
-            this.addSlot(new SlotItemHandler(handler, 1, 56, 17));
-            this.addSlot(new ModResultSlot(handler, 2, 116, 35));
+            this.addSlot(new SlotItemHandler(handler, 0, 34, 35));
+            this.addSlot(new SlotItemHandler(handler, 1, 68, 35));
+            this.addSlot(new ModResultSlot(handler, 2, 113, 35));
         });
+
+        addDataSlots(data);
+    }
+
+    public boolean isCrafting() {
+        return data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);  // Max Progress
+        int progressArrowSize = 14; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? progressArrowSize - (progress * progressArrowSize / maxProgress) : 0;
     }
 
 

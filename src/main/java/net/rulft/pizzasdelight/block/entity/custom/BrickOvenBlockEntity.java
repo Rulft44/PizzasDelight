@@ -7,12 +7,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -29,11 +33,13 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.rulft.pizzasdelight.block.entity.ModBlockEntities;
 import net.rulft.pizzasdelight.item.ModItems;
+import net.rulft.pizzasdelight.recipe.BrickOvenRecipe;
 import net.rulft.pizzasdelight.screen.BrickOvenMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 import java.util.Random;
 
 public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
@@ -46,8 +52,32 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 350;
+
     public BrickOvenBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.BRICK_OVEN_BLOCK_ENTITY.get(),pWorldPosition, pBlockState);
+        this.data = new ContainerData() {
+            public int get(int index) {
+                switch (index) {
+                    case 0: return BrickOvenBlockEntity.this.progress;
+                    case 1: return BrickOvenBlockEntity.this.maxProgress;
+                    default: return 0;
+                }
+            }
+
+            public void set(int index, int value) {
+                switch(index) {
+                    case 0: BrickOvenBlockEntity.this.progress = value; break;
+                    case 1: BrickOvenBlockEntity.this.maxProgress = value; break;
+                }
+            }
+
+            public int getCount() {
+                return 3;
+            }
+        };
     }
 
     @Override
@@ -58,7 +88,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory, Player pPlayer) {
-        return new BrickOvenMenu(pContainerId, pInventory, this);
+        return new BrickOvenMenu(pContainerId, pInventory, this, this.data);
     }
 
     @Nonnull
@@ -86,6 +116,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     protected void saveAdditional(@NotNull CompoundTag tag) {
         tag.put("inventory", itemHandler.serializeNBT());
+        tag.putInt("brick_oven.progress", progress);
         super.saveAdditional(tag);
     }
 
@@ -93,6 +124,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
+        progress = nbt.getInt("brick_oven.progress");
     }
 
     public void drops() {
@@ -106,28 +138,67 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
 
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, BrickOvenBlockEntity pBlockEntity) {
-        if(hasRecipe(pBlockEntity) && hasNotReachedStackLimit(pBlockEntity)) {
-            craftItem(pBlockEntity);
+        if(hasRecipe(pBlockEntity)) {
+            pBlockEntity.progress++;
+            setChanged(pLevel, pPos, pState);
+            if(pBlockEntity.progress > pBlockEntity.maxProgress) {
+                craftItem(pBlockEntity);
+            }
+        } else {
+            pBlockEntity.resetProgress();
+            setChanged(pLevel, pPos, pState);
         }
     }
 
-    private static void craftItem(BrickOvenBlockEntity entity) {
-        entity.itemHandler.extractItem(0, 1, false);
-        entity.itemHandler.extractItem(1, 1, false);
-        entity.itemHandler.getStackInSlot(1).hurt(1, new Random(), null);
-
-        entity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.MARGHERITA.get(),
-                entity.itemHandler.getStackInSlot(2).getCount() + 1));
-    }
-
     private static boolean hasRecipe(BrickOvenBlockEntity entity) {
-        boolean hasItemInFuelSlot = entity.itemHandler.getStackInSlot(0).getItem() == Items.OAK_LOG;
-        boolean hasItemInIngredientSlot = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.MARGHERITA_RAW.get();
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
 
-        return hasItemInFuelSlot && hasItemInIngredientSlot;
+        Optional<BrickOvenRecipe> match = level.getRecipeManager()
+                .getRecipeFor(BrickOvenRecipe.Type.INSTANCE, inventory, level);
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
+                && hasFuelInFuelSlot(entity);
+    }
+    private static boolean hasFuelInFuelSlot(BrickOvenBlockEntity entity) {
+        return entity.itemHandler.getStackInSlot(0).getItem() == Items.OAK_LOG;
     }
 
-    private static boolean hasNotReachedStackLimit(BrickOvenBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(2).getCount() < entity.itemHandler.getStackInSlot(2).getMaxStackSize();
+    private static void craftItem(BrickOvenBlockEntity entity) {
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
+
+        Optional<BrickOvenRecipe> match = level.getRecipeManager()
+                .getRecipeFor(BrickOvenRecipe.Type.INSTANCE, inventory, level);
+
+        if(match.isPresent()) {
+            entity.itemHandler.extractItem(0,1, false);
+            entity.itemHandler.extractItem(1,1, false);
+            entity.itemHandler.getStackInSlot(1).hurt(1, new Random(), null);
+
+            entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                    entity.itemHandler.getStackInSlot(2).getCount() + 1));
+
+            entity.resetProgress();
+        }
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
+        return inventory.getItem(2).getItem() == output.getItem() || inventory.getItem(2).isEmpty();
+    }
+
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 }

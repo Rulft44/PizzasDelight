@@ -26,6 +26,12 @@ public class BrickOvenScreen extends AbstractContainerScreen<BrickOvenMenu> {
         int y = (height - imageHeight) / 2;
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
+
+        if (menu.isCrafting()) {
+            // Modify the coordinates to start from the bottom and expand upwards
+            int arrowHeight = menu.getScaledProgress();
+            blit(pPoseStack, x + 90, y + 51 - arrowHeight, 176, 14 - arrowHeight, 14, arrowHeight);
+        }
     }
 
     @Override
