@@ -12,7 +12,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.rulft.pizzasdelight.block.ModBlocks;
 import net.rulft.pizzasdelight.block.entity.ModBlockEntities;
 import net.rulft.pizzasdelight.effect.PizzaEffects;
+import net.rulft.pizzasdelight.event.LogBlockRegistry;
 import net.rulft.pizzasdelight.item.ModItems;
+import net.rulft.pizzasdelight.painting.ModPaintings;
 import net.rulft.pizzasdelight.recipe.ModRecipes;
 import net.rulft.pizzasdelight.screen.BrickOvenScreen;
 import net.rulft.pizzasdelight.screen.ModMenuTypes;
@@ -33,13 +35,19 @@ public class PizzasDelight
     {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        LogBlockRegistry.init();
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+
         PizzaEffects.register(eventBus);
+
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
+
         ModRecipes.register(eventBus);
 
+        ModPaintings.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
