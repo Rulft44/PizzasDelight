@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -32,6 +33,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.rulft.pizzasdelight.block.entity.ModBlockEntities;
+import net.rulft.pizzasdelight.event.LogBlockRegistry;
 import net.rulft.pizzasdelight.item.ModItems;
 import net.rulft.pizzasdelight.recipe.BrickOvenRecipe;
 import net.rulft.pizzasdelight.screen.BrickOvenMenu;
@@ -165,7 +167,8 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
                 && hasFuelInFuelSlot(entity);
     }
     private static boolean hasFuelInFuelSlot(BrickOvenBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(0).getItem() == Items.OAK_LOG;
+        Item fuelItem = entity.itemHandler.getStackInSlot(0).getItem();
+        return LogBlockRegistry.isLogItem(fuelItem);
     }
 
     private static void craftItem(BrickOvenBlockEntity entity) {
