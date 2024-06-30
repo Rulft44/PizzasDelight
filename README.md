@@ -1,5 +1,5 @@
-![Static Badge](https://img.shields.io/badge/-CurseForge-white?style=for-the-badge&logo=curseforge&logoColor=white&color=f16436)
-![Static Badge](https://img.shields.io/badge/-Modrinth-white?style=for-the-badge&logo=modrinth&logoColor=white&color=%231bd96a)
+[![Modrinth](https://raw.githubusercontent.com/Rulft44/mod-tools/main/modrinth-badge.svg)](https://modrinth.com/mod/pizzas-delight)
+[![Curseforge](https://raw.githubusercontent.com/Rulft44/mod-tools/main/curseforge-badge.svg)](https://curseforge.com/minecraft/mc-mods/pizzas-delight)
 
 <br />
 <div align="center">
