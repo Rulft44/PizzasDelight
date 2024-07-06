@@ -23,7 +23,7 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> BRICK_OVEN = registerBlock("brick_oven",
-            () -> new BrickOvenBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS).noOcclusion()),
+            () -> new BrickOvenBlock(BlockBehaviour.Properties.copy(Blocks.FURNACE).noOcclusion()),
             ModCreativeModeTab.PIZZA_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {

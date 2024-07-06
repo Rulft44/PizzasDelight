@@ -1,42 +1,28 @@
 package net.rulft.pizzasdelight.event;
 
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.rulft.pizzasdelight.PizzasDelight;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = PizzasDelight.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LogBlockRegistry {
-    private static final Set<Material> logMaterials = new HashSet<>();
-
     public static void init() {
         MinecraftForge.EVENT_BUS.addListener(LogBlockRegistry::onServerStarting);
     }
 
     private static void onServerStarting(ServerStartingEvent event) {
-        // Clear and rebuild the list of log materials
-        logMaterials.clear();
-        // Add more materials if needed
-        logMaterials.add(Material.WOOD);
-        logMaterials.add(Material.NETHER_WOOD);
-    }
-
-    public static Set<Material> getLogMaterials() {
-        return logMaterials;
+        // Any server starting logic can be added here if needed
     }
 
     public static boolean isLogItem(Item item) {
@@ -44,17 +30,14 @@ public class LogBlockRegistry {
     }
 
     public static boolean isLogBlock(Block block) {
-        return logMaterials.contains(block.defaultBlockState().getMaterial());
+        return block.asItem().builtInRegistryHolder().is(ItemTags.LOGS);
     }
 
-    public static Ingredient getLogItemsFromMaterials(Set<Material> materials) {
+    public static Ingredient getLogItemsFromTags() {
         List<ItemStack> logItems = new ArrayList<>();
         for (Item item : ForgeRegistries.ITEMS) {
-            if (item instanceof BlockItem) {
-                Block block = ((BlockItem) item).getBlock();
-                if (materials.contains(block.defaultBlockState().getMaterial())) {
-                    logItems.add(new ItemStack(item));
-                }
+            if (isLogItem(item)) {
+                logItems.add(new ItemStack(item));
             }
         }
         return Ingredient.of(logItems.toArray(new ItemStack[0]));

@@ -5,10 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -18,23 +14,17 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.rulft.pizzasdelight.block.custom.BrickOvenBlock;
 import net.rulft.pizzasdelight.block.entity.ModBlockEntities;
 import net.rulft.pizzasdelight.event.LogBlockRegistry;
-import net.rulft.pizzasdelight.item.ModItems;
 import net.rulft.pizzasdelight.recipe.BrickOvenRecipe;
 import net.rulft.pizzasdelight.screen.BrickOvenMenu;
 import org.jetbrains.annotations.NotNull;
@@ -141,12 +131,14 @@ public class BrickOvenBlockEntity extends BlockEntity implements MenuProvider {
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, BrickOvenBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
+            BrickOvenBlock.LIT = true;
             pBlockEntity.progress++;
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress) {
                 craftItem(pBlockEntity);
             }
         } else {
+            BrickOvenBlock.LIT = false;
             pBlockEntity.resetProgress();
             setChanged(pLevel, pPos, pState);
         }

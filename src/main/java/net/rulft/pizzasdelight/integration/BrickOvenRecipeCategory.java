@@ -65,8 +65,7 @@ public class BrickOvenRecipeCategory implements IRecipeCategory<BrickOvenRecipe>
 
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull BrickOvenRecipe recipe, @Nonnull IFocusGroup focusGroup) {
-        Set<Material> logMaterials = LogBlockRegistry.getLogMaterials();
-        Ingredient logIngredient = LogBlockRegistry.getLogItemsFromMaterials(logMaterials);
+        Ingredient logIngredient = LogBlockRegistry.getLogItemsFromTags();
 
         // Input slot for logs based on materials
         builder.addSlot(RecipeIngredientRole.INPUT, 9, 21).addIngredients(logIngredient);
