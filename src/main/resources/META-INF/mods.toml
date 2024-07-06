@@ -27,7 +27,7 @@ displayName="Pizza's Delight" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="logo(UPSCALED).png" #optional
+logoFile="logo_square(UPSCALED).png" #optional
 # A text field displayed in the mod UI
 credits="Thanks for the Forge docs for being dog**** ;D (jk, pls don't come after my fami- *gets shot* *screams* *dies*)" #optional
 # A text field displayed in the mod UI
