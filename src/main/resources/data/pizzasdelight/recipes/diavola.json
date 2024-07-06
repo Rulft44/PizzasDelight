@@ -1,0 +1,11 @@
+{
+  "type": "pizzasdelight:brick_ovening",
+  "ingredients": [
+    {
+      "item": "pizzasdelight:diavola_raw"
+    }
+  ],
+  "output": {
+    "item": "pizzasdelight:diavola"
+  }
+}
